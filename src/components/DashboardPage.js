@@ -1,8 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import PostsList from "./PostsList";
 
 const DashboardPage = () => (
     <div>
-        <h1>Blog</h1>
+        <Link to="/create">New Post</Link>
+        <PostsList />
     </div>
 );
 

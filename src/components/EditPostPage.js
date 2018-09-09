@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { editPost, deletePost } from "../actions/posts";
+import { startEditPost, startDeletePost } from "../actions/posts";
 import PostForm from "./PostForm";
 
 class EditPostPage extends React.Component {
@@ -31,8 +31,8 @@ const mapStateToProps = (state, props)  => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    editPost: (id, updates) => dispatch(editPost(id, updates)),
-    deletePost: (data) => dispatch(deletePost(data))
+    editPost: (id, updates) => dispatch(startEditPost(id, updates)),
+    deletePost: (data) => dispatch(startDeletePost(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPostPage);

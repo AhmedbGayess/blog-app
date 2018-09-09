@@ -16,6 +16,8 @@ const postsReducer = (state = postsDefaultState, action) => {
                         ...post,
                         ...action.updates
                     }
+                } else {
+                    return post;
                 }
             });
         default:

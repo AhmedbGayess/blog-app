@@ -4,14 +4,15 @@ export default class PostForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: "",
-            body: "",
+            title: props.currentPost ? props.currentPost.title : "",
+            body: props.currentPost ? props.currentPost.body : "",
             error: ""
         }
     }
     onTitleChange = (e) => {
         const title = e.target.value;
         this.setState(() => ({ title }));
+        console.log(this.props)
     }
     onBodyChange = (e) => {
         const body = e.target.value;
@@ -30,7 +31,7 @@ export default class PostForm extends React.Component {
                 body: this.state.body
             });
         }
-    } 
+    }; 
     render() {
         return (
             <form onSubmit={this.onSubmit}>
@@ -38,11 +39,12 @@ export default class PostForm extends React.Component {
                     type="text"
                     placeholder="Post Title"
                     onChange={this.onTitleChange}
-                    value={this.props.title}
+                    value={this.state.title}
                 />
                 <textarea
                     placeholder="Post Body"
                     onChange={this.onBodyChange}
+                    value={this.state.body}
                 />
                 <button>Add Post</button>
             </form>

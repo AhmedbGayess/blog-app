@@ -12,7 +12,6 @@ export default class PostForm extends React.Component {
     onTitleChange = (e) => {
         const title = e.target.value;
         this.setState(() => ({ title }));
-        console.log(this.props)
     }
     onBodyChange = (e) => {
         const body = e.target.value;

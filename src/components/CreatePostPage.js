@@ -6,7 +6,7 @@ import { startCreatePost } from "../actions/posts";
 class CreatePostPage extends React.Component {
     onSubmit = (post) => {
         this.props.createPost(post);
-        this.props.history.push("/");
+        this.props.history.push("/dashboard");
     };
     render() {
         return (

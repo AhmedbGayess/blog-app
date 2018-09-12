@@ -1,3 +1,4 @@
+import uuid from "uuid";
 import moment from "moment";
 import database from "../firebase/firebase";
 
@@ -7,14 +8,16 @@ const createPost = (post) => ({
 });
 
 export const startCreatePost = (postData = {}) => {
-    return (dispatch) => {
+    return (dispatch,getState) => {
         const {
             title = "",
             body = "",
-            publishedAt = moment().format("MMMM Do YYYY, HH:mm")
+            publishedAt = moment().format("MMMM Do YYYY, HH:mm"),
+            link = `/posts/${uuid()}`
         } = postData;
-        const post = { title, body, publishedAt }
-        return database.ref("posts").push(post).then((ref) => {
+        const post = { title, body, publishedAt, link }
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/posts`).push(post).then((ref) => {
             dispatch(createPost({
                 id: ref.key,
                 ...post
@@ -30,8 +33,9 @@ const editPost = (id, updates) => ({
 });
 
 export const startEditPost = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`posts/${id}`).update({
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/posts/${id}`).update({
             ...updates
         }).then(() => {
             dispatch(editPost(id, updates));
@@ -45,9 +49,32 @@ const deletePost = ({ id } = {}) => ({
 });
 
 export const startDeletePost = ({ id } = {}) => {
-    return (dispatch) => {
-        return database.ref(`posts/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/posts/${id}`).remove().then(() => {
             dispatch(deletePost({ id }));
         })
+    };
+};
+
+const setPosts = (posts) => ({
+    type: "SET_POSTS",
+    posts
+});
+
+export const startSetPosts = () => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/posts`).once("value").then((snapshot) => {
+            const posts = [];
+            snapshot.forEach((snapshotChild) => {
+                posts.push({
+                    id: snapshotChild.key,
+                    ...snapshotChild.val()
+                });
+            });
+            dispatch(setPosts(posts));
+        });
     }
-}
+};
+

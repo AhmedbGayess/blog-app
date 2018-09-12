@@ -10,7 +10,7 @@ const PostPage = (props) => (
 );
 
 const mapStateToProps = (state, props)  => ({
-    currentPost: state.posts.find((post) => post.link === `/posts/${props.match.params.id}`)
+    currentPost: state.publicPosts.find((post) => post.link === `/posts/${props.match.params.id}`)
 });
 
 export default connect(mapStateToProps)(PostPage);

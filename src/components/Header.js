@@ -8,28 +8,28 @@ class Header extends React.Component {
         loggedIn: false
     }
     onLoginLogout = () => {
-        console.log(this.props.user)
         if (this.state.loggedIn) {
-            this.props.startLogout();
-            this.setState(() => ({
-                loggedIn: false
-            }));
+            this.props.startLogout().then(() => {
+                this.setState(() => ({
+                    loggedIn: false
+                }));
+            })
         } else {
-            this.props.startLogin();
-            this.setState(() => ({
-                loggedIn: true
-            }));
+            this.props.startLogin().then(() => {
+                this.setState(() => ({
+                    loggedIn: true
+                }));
+            });
         }
     }
     render() {
         return (
             <div>
                 <Link to="/">
-                    <h1>Blog</h1>
-                    
+                    <h1>Anonymous Thoughts</h1>
                 </Link>
                 <button onClick={this.onLoginLogout}>{this.state.loggedIn ? "Logout" : "Login"}</button>
-                    <Link to="/dashboard">My Page</Link>
+                <Link to="/dashboard">My Page</Link>
             </div>
         );
     }

@@ -11,7 +11,7 @@ const DashboardPage = (props) => (
             <LinkContainer to="/create">
                 <Button className="post-button">Create a new post</Button>
             </LinkContainer>
-            {props.postsNumber > 0 ? <p>You currently have {props.postsNumber} post(s)</p> : <p>You have no posts</p>}
+            {props.postsNumber > 0 ? <p>You currently have {props.postsNumber} post(s)</p> : ""}
         </div>
         <div className="small-container">
             <PostsListFilters />

@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { ListGroup } from "react-bootstrap";
 import visiblePosts from "../selectors/posts";
-import Post from "./Post";
+import PostLink from "./PostLink";
 
 const HomePagePostsList = (props) => (
     <ListGroup>
         {props.posts.map((post) => {
-            return <Post key={post.id} {...post} />;
+            return <PostLink key={post.id} {...post} />;
         })}
     </ListGroup>
 

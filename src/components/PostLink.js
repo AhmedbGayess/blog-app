@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ListGroupItem } from "react-bootstrap";
 
-const PostLink = (props) => (
+const PostLink = ({ title, publishedAt, link }) => (
     <div className="postcard">
-        <Link to={props.post.link} className="post-link">
+        <Link to={link} className="post-link">
             <ListGroupItem>
-                <h2 className="postcard__title">{props.post.title}</h2>
-                <p className="postcard__text">{props.post.publishedAt}</p>
+                <h2 className="postcard__title">{title}</h2>
+                <p className="postcard__text">{publishedAt}</p>
             </ListGroupItem>
         </Link>
     </div>

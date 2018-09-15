@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setTextFilter, sortByDate, sortByTitle } from "../actions/filters";
+import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class PostsListFilters extends React.Component {
     onTextChange = (e) => {
@@ -15,20 +16,28 @@ class PostsListFilters extends React.Component {
     }
     render() {
         return (
-            <div>
-                <input
-                    type="text"
-                    value={this.props.filters.text}
-                    onChange={this.onTextChange}
-                />
-                <select 
-                    value={this.props.filters.sortBy}
-                    onChange={this.onSortByChange}
-                >
-                    <option value="date">Date</option>
-                    <option value="title">Title</option>
-                </select>
-            </div>
+            <Form inline>
+                <FormGroup>
+                <ControlLabel>Search for a post</ControlLabel>{' '}
+                    <FormControl
+                        type="text"
+                        placeholder="..."
+                        value={this.props.filters.text}
+                        onChange={this.onTextChange}
+                    />
+                    </FormGroup>{' '}
+                    <FormGroup>
+                    <ControlLabel>Sort by</ControlLabel>{' '}
+                    <FormControl 
+                        componentClass="select"
+                        value={this.props.filters.sortBy}
+                        onChange={this.onSortByChange}
+                    >
+                        <option value="date">Date</option>
+                        <option value="title">Title</option>
+                    </FormControl>
+                    </FormGroup>
+            </Form>
         );
     }
 };

@@ -1,0 +1,26 @@
+.post {
+    margin-top: 3rem;
+}
+
+.post__title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 6rem;
+    &::first-letter {
+        text-transform: capitalize;
+    }
+    @media(max-width: 61.9rem) {
+        font-size: 4rem;
+    }
+}
+
+.post__body {
+    text-align: justify;
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+.post__date {
+    font-size: 1.2rem;
+    font-style: italic;
+}

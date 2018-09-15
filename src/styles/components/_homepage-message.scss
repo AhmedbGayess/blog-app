@@ -1,0 +1,22 @@
+.homepage-message {
+    margin: 25rem 0;
+    padding-right: 10px;
+    @media (max-width: 61.9rem) {
+        margin: 0 0 4rem 0;
+        padding: 0;
+    }
+}
+
+.homepage-message__title {
+    font-weight: bold;
+    margin-bottom: 5rem;
+    @media (max-width: 61.9rem) {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+}
+
+.homepage-message__body {
+    text-align: justify;
+}

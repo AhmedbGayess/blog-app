@@ -1,0 +1,24 @@
+.postcard__title {
+    font-weight: 600;
+    word-break: break-all;
+    &::first-letter {
+        text-transform: capitalize;
+    }
+    @media(max-width: 61.9rem) {
+        font-size: 2rem;
+    }
+}
+
+.postcard__text {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin-left: 5px; 
+}
+
+.post-link {
+    color: black;
+    &:hover {
+        text-decoration: none;
+        color: black;
+    }
+}

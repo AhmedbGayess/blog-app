@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Grid, Button } from "react-bootstrap";
+import {LinkContainer} from "react-router-bootstrap";
 import { startEditPost, startDeletePost } from "../actions/posts";
 import { startSetPublicPosts } from "../actions/publicPosts";
 import PostForm from "./PostForm";
@@ -19,13 +20,17 @@ class EditPostPage extends React.Component {
     render() {
         return (
             <div>
-                edit
-                <Link to={this.props.currentPost.link}>Post Link</Link>
-                <PostForm
-                    currentPost={this.props.currentPost}
-                    onSubmit={this.onSubmit}
-                />
-                <button onClick={this.onDelete}>Delete Post</button>
+                <Grid>
+                    <LinkContainer to={this.props.currentPost.link}>
+                        <Button className="post-button">Post Preview</Button>
+                    </LinkContainer>
+                    <PostForm
+                        currentPost={this.props.currentPost}
+                        onSubmit={this.onSubmit}
+                    />
+                    <Button onClick={this.onDelete}>Delete Post</Button>
+                </Grid>
+
             </div>
         );
     }

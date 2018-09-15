@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+import {Grid} from "react-bootstrap";
 
 const PostPage = (props) => (
-    <div>
-        <h1>{props.currentPost.title}</h1>
-        <p>{props.currentPost.body}</p>
-        <p>{props.currentPost.publishedAt}</p>
-    </div>
+    <Grid className="post">
+        <h1 className="post__title">{props.currentPost.title}</h1>
+        <p className="post__body">{props.currentPost.body}</p>
+        <p className="post__date">{props.currentPost.publishedAt}</p>
+    </Grid>
 );
 
 const mapStateToProps = (state, props)  => ({

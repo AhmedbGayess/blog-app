@@ -7,6 +7,7 @@ import configureStore from "./store/configureStore";
 import { startSetPosts } from "./actions/posts";
 import { login, logout } from "./actions/auth";
 import { startSetPublicPosts } from "./actions/publicPosts";
+import './styles/styles.scss';
 
 const store = configureStore();
 store.dispatch(startSetPublicPosts());

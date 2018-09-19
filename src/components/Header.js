@@ -7,7 +7,8 @@ import { LinkContainer } from "react-router-bootstrap";
 
 class AppHeader extends React.Component {
     state = {
-        show: false
+        show: false,
+        loggedIn: false
     };
     onLoginLogout = () => {
         if (this.props.loggedIn) {
